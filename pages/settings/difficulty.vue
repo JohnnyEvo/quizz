@@ -26,30 +26,22 @@
       </ul>
 </template>
 
-<script lang="ts">
-import {Single} from "#components";
+<script lang="ts" setup>
 import {useGameStore} from "~/store/game";
 import waveAnimation from "~/compositions/animations/wave";
 import {Difficult} from "../../types/global";
+import { defineEmits } from 'vue'
+import {useRouter} from "nuxt/app";
+const emit = defineEmits(['progress'])
+const router = useRouter()
+const gameStore = useGameStore()
 
-export default {
-  emits: ['progress'],
-  async setup(props, {emit}) {
-    const gameStore = useGameStore()
+emit('progress', 0)
+await waveAnimation();
 
-    emit("progress", 0)
+let choiceDifficulty = (difficulty: Difficult) => {
+  gameStore.setDifficulty(difficulty)
+  router.push('/settings/questions_number')
 
-    await waveAnimation();
-
-    return { gameStore }
-  },
-  components: {Single},
-  methods: {
-    async choiceDifficulty(difficulty: Difficult) {
-      this.gameStore.setDifficulty(difficulty)
-
-      this.$router.push('/settings/questions_number');
-    },
-  },
 }
 </script>

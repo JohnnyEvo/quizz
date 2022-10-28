@@ -11,30 +11,22 @@
   </NuxtLayout>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 import Wave from '~/components/icons/Wave.vue'
 import Single from "~/components/Single.vue";
 import {onMounted} from "@vue/runtime-core";
 import {useRouter} from "nuxt/app";
+import {ref} from "@vue/reactivity";
+import {Ref} from "vue";
+const router = useRouter()
 
-export default {
-  async setup() {
-    const router = useRouter();
+onMounted(() => {
+  router.push('/settings/difficulty');
+})
 
-    onMounted(() => {
-      router.push('/settings/difficulty');
-    })
-  },
-  components: {Wave, Single},
-  data() {
-    return {
-      progress_percent: 0
-    }
-  },
-  methods: {
-    changeProgress(value : number) {
-      this.progress_percent = value;
-    }
-  }
+let progress_percent: Ref<Number> = ref(0)
+
+let changeProgress = (value: Number) => {
+  return progress_percent.value = value
 }
 </script>
