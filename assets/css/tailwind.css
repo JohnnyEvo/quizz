@@ -1,0 +1,5 @@
+@import url('https://api.fontshare.com/v2/css?f[]=ranade@300,500&f[]=excon@500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
