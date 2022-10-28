@@ -31,12 +31,14 @@ import {Single} from "#components";
 import {useGameStore} from "~/store/game";
 import waveAnimation from "~/compositions/animations/wave";
 import {QuestionNumber} from "../../types/global";
+import {redirectIfNotDifficult} from "../../compositions/router/redirectIfGameInvalid";
 
 export default {
   emits: ['progress'],
   async setup(props, {emit}) {
     const gameStore = useGameStore();
 
+    redirectIfNotDifficult();
     emit("progress", 33);
 
     await waveAnimation();

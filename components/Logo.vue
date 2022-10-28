@@ -15,13 +15,14 @@
 import Question from "./icons/Question.vue"
 import Vivus from 'vivus';
 import {onMounted} from "@vue/runtime-core";
+import stroke from "../compositions/animations/stroke";
 
 export default {
   name: 'Logo',
   components: {Question},
   setup() {
     onMounted(() => {
-      new Vivus('question-stroke-svg');
+      stroke('question-stroke-svg')
     })
   }
 }
