@@ -13,16 +13,14 @@
   </NuxtLayout>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 import Logo from '~/components/Logo.vue'
 import ArrowRight from '~/components/icons/ArrowRight.vue'
+import {useRouter} from "nuxt/app";
+const router = useRouter();
 
-export default {
-  components: {Logo, ArrowRight},
-  methods: {
-    goSettings() {
-      this.$router.push('/settings');
-    }
-  }
+let goSettings = ():void => {
+  router.push({name:'settings'})
 }
+
 </script>
