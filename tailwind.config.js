@@ -3,7 +3,7 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 /** @type {import('tailwindcss').Config} */
 module.exports = {
     content: [
-        "./compositions/**/*.{vue,js,ts}",
+        "./composables/**/*.{vue,js,ts}",
         "./components/**/*.{vue,js,ts}",
         "./layouts/**/*.vue",
         "./pages/**/*.vue",

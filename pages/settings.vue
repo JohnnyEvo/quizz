@@ -1,38 +1,42 @@
 <template>
   <NuxtLayout>
-    <Single :progress_percent="progress_percent">
-      <router-view @progress="changeProgress"></router-view>
-      <div class="w-full h-full bg-secondary absolute transition-all duration-1000 left-0 bottom-0 translate-y-full"
-           id="wave-bg"></div>
-      <Wave stroke-color="transparent" fill-color="#11cccc"
-            class="delay-150 w-full h-full absolute transition-all duration-1000 left-0 bottom-0 translate-y-full"
-            id="wave"/>
-    </Single>
+    <div class="h-screen w-screen flex items-center justify-center">
+      <div class="flex flex-col items-center justify-center">
+        <Logo/>
+        <ProgressBar :progress="progress_percent"/>
+        <Card>
+          <NuxtPage @progress="changeProgress" />
+          <WaveTransition />
+        </Card>
+      </div>
+    </div>
   </NuxtLayout>
 </template>
 
 <script lang="ts">
-import Wave from '~/components/icons/Wave.vue'
-import Single from "~/components/Single.vue";
-import {onMounted} from "@vue/runtime-core";
 import {useRouter} from "nuxt/app";
+import {onMounted} from "vue";
+import useWaveTransition from "../composables/transitions/settings-wave";
 
 export default {
   async setup() {
     const router = useRouter();
 
+    definePageMeta({
+      pageTransition: useWaveTransition
+    });
+
     onMounted(() => {
       router.push('/settings/difficulty');
     })
   },
-  components: {Wave, Single},
   data() {
     return {
       progress_percent: 0
     }
   },
   methods: {
-    changeProgress(value : number) {
+    changeProgress(value: number) {
       this.progress_percent = value;
     }
   }

@@ -18,5 +18,5 @@ export default defineNuxtConfig({
         '@nuxtjs/tailwindcss',
         '@pinia/nuxt'
     ],
-    css: ["~/assets/css/tailwind.css"]
+    css: ["~/assets/css/tailwind.css"],
 })

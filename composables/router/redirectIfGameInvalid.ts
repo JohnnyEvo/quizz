@@ -2,12 +2,7 @@ import {onMounted} from "@vue/runtime-core";
 import {useRouter} from "nuxt/app";
 import {useGameStore} from "../../store/game";
 
-export default () => {
-    redirectIfNotQuestionNumber();
-    redirectIfNotDifficult();
-}
-
-export let redirectIfNotDifficult = () => {
+export let useRedirectIfNotDifficult = () => {
     onMounted(() => {
         const router = useRouter();
         const gameStore = useGameStore();
@@ -18,7 +13,7 @@ export let redirectIfNotDifficult = () => {
     });
 }
 
-export let redirectIfNotQuestionNumber = () => {
+export let useRedirectIfNotQuestionNumber = () => {
     onMounted(() => {
         const router = useRouter();
         const gameStore = useGameStore();
