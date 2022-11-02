@@ -13,7 +13,7 @@
 </template>
 <script lang="ts">
 import {onMounted} from "@vue/runtime-core";
-import stroke from "../composables/animations/stroke";
+import stroke from "../composables/animations/useStroke";
 
 export default {
   name: 'Logo',

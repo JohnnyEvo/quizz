@@ -1,34 +1,32 @@
 <template>
   <NuxtLayout>
-    <div class="h-screen w-screen flex items-center justify-center">
-      <div class="flex flex-col items-center justify-center">
-        <Logo/>
-        <ProgressBar :progress="progress_percent"/>
-        <Card>
-          <NuxtPage @progress="changeProgress" />
-          <WaveTransition />
-        </Card>
-      </div>
-    </div>
+    <ProgressBar :progress="progress_percent"/>
+    <Card>
+      <NuxtPage @progress="changeProgress" :transition="useSettingsWaveTransition"/>
+      <WaveTransition/>
+    </Card>
   </NuxtLayout>
 </template>
 
 <script lang="ts">
 import {useRouter} from "nuxt/app";
 import {onMounted} from "vue";
-import useWaveTransition from "../composables/transitions/settings-wave";
+import useSettingsWaveTransition from "../composables/transitions/useSettingsWave";
+import useTranslateContent from "../composables/transitions/useTranslateContent";
 
 export default {
   async setup() {
     const router = useRouter();
 
     definePageMeta({
-      pageTransition: useWaveTransition
-    });
+      pageTransition: useTranslateContent,
+    })
 
     onMounted(() => {
       router.push('/settings/difficulty');
-    })
+    });
+
+    return {useSettingsWaveTransition}
   },
   data() {
     return {

@@ -31,8 +31,7 @@
 <script lang="ts">
 import {useGameStore} from "~/store/game";
 import {QuestionNumber} from "../../types/global";
-import {useRedirectIfNotDifficult} from "../../composables/router/redirectIfGameInvalid";
-import useWaveTransition from "../../composables/transitions/settings-wave";
+import {useRedirectIfNotDifficult} from "../../composables/router/useRedirectIfGameInvalid";
 
 export default {
   emits: ['progress'],

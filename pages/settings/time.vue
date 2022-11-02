@@ -31,7 +31,7 @@
 <script lang="ts">
 import {useGameStore} from "~/store/game";
 import {Time} from "../../types/global";
-import {useRedirectIfNotDifficult, useRedirectIfNotQuestionNumber} from "../../composables/router/redirectIfGameInvalid";
+import {useRedirectIfNotDifficult, useRedirectIfNotQuestionNumber} from "../../composables/router/useRedirectIfGameInvalid";
 
 export default {
   emits: ['progress'],

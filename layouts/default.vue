@@ -1,6 +1,11 @@
 <template>
   <div class="relative overflow-hidden">
-      <slot/>
+    <div class="flex flex-col justify-center items-center h-screen w-screen">
+      <Logo/>
+      <div class="content">
+        <slot/>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -9,7 +14,7 @@ import {useHead} from "nuxt/app";
 
 useHead({
   bodyAttrs: {
-    class: "bg-primary-gradient bg-cover w-screen h-screen font-body"
+    class: "bg-primary-gradient bg-cover w-screen h-screen font-body overflow-hidden"
   }
 })
 </script>
