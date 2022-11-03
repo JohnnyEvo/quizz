@@ -30,12 +30,16 @@
 
 <script lang="ts">
 import {useGameStore} from "~/store/game";
-import {Time} from "../../types/global";
-import {useRedirectIfNotDifficult, useRedirectIfNotQuestionNumber} from "../../composables/router/useRedirectIfGameInvalid";
+import {Time} from "@/types/game";
+import {useRedirectIfNotDifficult, useRedirectIfNotQuestionNumber} from "@/composables/router/redirectIfGameInvalid";
 
 export default {
   emits: ['progress'],
   async setup(props, {emit}) {
+    definePageMeta({
+      pageTransition: {},
+    });
+
     const gameStore = useGameStore()
 
     emit("progress", 66)
@@ -46,7 +50,12 @@ export default {
   },
   methods: {
     async choiceTime(time: Time) {
-      this.gameStore.setTime(time)
+      this.gameStore.setTime(time);
+
+      this.$emit("progress", 100);
+      setTimeout(() => {
+        this.$router.push('/start');
+      }, 300);
     },
   },
 }

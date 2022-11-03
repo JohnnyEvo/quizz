@@ -3,3 +3,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    :root {
+        --color-primary: 128 86 256;
+        --color-secondary: 254 175 130;
+        --color-alternative: 17 204 204;
+        --color-danger: 223 59 87;
+        --color-warning: 247 231 51;
+    }
+}

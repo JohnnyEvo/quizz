@@ -2,7 +2,7 @@
   <NuxtLayout>
     <ProgressBar :progress="progress_percent"/>
     <Card>
-      <NuxtPage @progress="changeProgress" :transition="useSettingsWaveTransition"/>
+      <NuxtPage @progress="changeProgress" :transition="useSettingsWave"/>
       <WaveTransition/>
     </Card>
   </NuxtLayout>
@@ -11,8 +11,8 @@
 <script lang="ts">
 import {useRouter} from "nuxt/app";
 import {onMounted} from "vue";
-import useSettingsWaveTransition from "../composables/transitions/useSettingsWave";
-import useTranslateContent from "../composables/transitions/useTranslateContent";
+import {useSettingsWave} from "@/composables/transitions/settingsWave";
+import {useTranslateContent} from "@/composables/transitions/translateContent";
 
 export default {
   async setup() {
@@ -26,7 +26,7 @@ export default {
       router.push('/settings/difficulty');
     });
 
-    return {useSettingsWaveTransition}
+    return {useSettingsWave}
   },
   data() {
     return {

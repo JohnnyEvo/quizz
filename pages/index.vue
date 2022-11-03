@@ -16,19 +16,17 @@
   </NuxtLayout>
 </template>
 
-<script lang="ts">
-import useTranslateContentTransition from "../composables/transitions/useTranslateContent";
+<script setup lang="ts">
+import {useTranslateContent} from "@/composables/transitions/translateContent";
+import {useRouter} from "nuxt/app";
 
-export default {
-  setup() {
-    definePageMeta({
-      pageTransition: useTranslateContentTransition
-    });
-  },
-  methods: {
-    goSettings() {
-      this.$router.push('/settings');
-    }
-  },
-}
+const router = useRouter();
+
+definePageMeta({
+  pageTransition: useTranslateContent
+})
+
+let goSettings = () => {
+  router.push('/settings');
+};
 </script>

@@ -30,12 +30,18 @@
 
 <script lang="ts">
 import {useGameStore} from "~/store/game";
-import {Difficult} from "../../types/global";
+import {Difficult} from "@/types/game";
 
 export default {
   emits: ['progress'],
   async setup(props, {emit}) {
     const gameStore = useGameStore();
+
+    gameStore.reset();
+
+    definePageMeta({
+      pageTransition: {},
+    });
 
     emit("progress", 0);
 

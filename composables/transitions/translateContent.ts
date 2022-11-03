@@ -1,9 +1,8 @@
 import {timeline} from "motion";
 
-export default {
+export let useTranslateContent = {
     css: false,
     onLeave: async (el: HTMLElement, done: Function) => {
-        console.log(el)
         let element = el.querySelector(".content");
         const sequence = [
             [element, {x: -100}, {duration: 0.8}],
@@ -14,7 +13,6 @@ export default {
         done();
     },
     onEnter: async (el: Element, done: Function) => {
-        console.log(el)
         let element = el.querySelector(".content")
         const sequence = [
             [element, {x: 100}, {duration: 0.8}],

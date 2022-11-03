@@ -30,13 +30,17 @@
 
 <script lang="ts">
 import {useGameStore} from "~/store/game";
-import {QuestionNumber} from "../../types/global";
-import {useRedirectIfNotDifficult} from "../../composables/router/useRedirectIfGameInvalid";
+import {QuestionNumber} from "@/types/game";
+import {useRedirectIfNotDifficult} from "@/composables/router/redirectIfGameInvalid";
 
 export default {
   emits: ['progress'],
   async setup(props, {emit}) {
     const gameStore = useGameStore();
+
+    definePageMeta({
+      pageTransition: {},
+    });
 
     useRedirectIfNotDifficult();
     emit("progress", 33);

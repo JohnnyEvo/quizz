@@ -1,6 +1,6 @@
 import {timeline} from "motion";
 
-export default {
+export let useSettingsWave = {
     css: false,
     mode: 'out-in',
     onLeave: async (el: Element, done: Function) => {

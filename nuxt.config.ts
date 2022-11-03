@@ -19,4 +19,10 @@ export default defineNuxtConfig({
         '@pinia/nuxt'
     ],
     css: ["~/assets/css/tailwind.css"],
+    runtimeConfig: {
+            apiSecret: process.env.API_SECRET,
+        public: {
+            apiBase: process.env.API_BASE,
+        }
+    },
 })
