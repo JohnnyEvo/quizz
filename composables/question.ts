@@ -1,5 +1,4 @@
 import {storeToRefs} from "pinia";
-import {timeline} from "motion";
 import {watch} from "vue";
 import {useGameStore} from "../store/game";
 import {ref} from "vue";
@@ -25,8 +24,6 @@ export let useQuestion = () => {
     }
 
     let markAsCorrect = async (element: HTMLElement) => {
-        await upTransition(<HTMLElement>element.childNodes[1]);
-
         const answerElements = document.getElementsByClassName('answer-js');
 
         for (const element of answerElements) {
@@ -40,35 +37,22 @@ export let useQuestion = () => {
         element.classList.add('bg-primary');
         element.classList.add('text-white');
 
-        await downTransition(<HTMLElement>element.childNodes[1]);
+        await new Promise(resolve => {
+            setTimeout(() => resolve(true), 1000);
+        })
     }
 
-    let upTransition = async (element: HTMLElement) => {
-        const sequence = [
-            [element, {transform: "translateY(0)"}, {duration: 1}],
-        ];
-
-        await timeline(<any>sequence).finished;
-    }
-
-    let downTransition = async (element: HTMLElement) => {
-        const sequence = [
-            [element, {transform: "translateY(100%)"}, {duration: 1}],
-        ];
-
-        await timeline(<any>sequence).finished;
-    }
 
     let markAsBad = async (element: HTMLElement) => {
-        await upTransition(<HTMLElement>element.childNodes[1]);
-
         element.classList.remove('bg-white');
         element.classList.remove('text-primary');
 
         element.classList.add('bg-[rgb(var(--color-danger))]');
         element.classList.add('text-white');
 
-        await downTransition(<HTMLElement>element.childNodes[1]);
+        await new Promise(resolve => {
+            setTimeout(() => resolve(true), 1000);
+        })
     }
 
     let resetAnswers = () => {
