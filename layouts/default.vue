@@ -1,6 +1,6 @@
 <template>
   <div class="relative overflow-hidden">
-    <div class="flex flex-col justify-center items-center h-screen w-screen">
+    <div class="flex flex-col justify-center items-center h-screen w-screen p-4 md:p-0">
       <Logo/>
       <div class="content">
         <slot/>
