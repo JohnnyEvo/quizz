@@ -9,6 +9,9 @@
         <span class="uppercase after:mx-1 after:content-[':']" v-if="question.category">{{ question.category }}</span>
         {{ question.question }}
       </div>
+      <div>
+        <ProgressBar :progress="question_progress"/>
+      </div>
       <div class="flex flex-col justify-between mt-4">
         <div
             class="overflow-hidden relative my-1 bg-white text-primary py-4 px-2 cursor-pointer rounded-lg hover:bg-primary transition-all hover:text-white hover:border hover:border-alternative border border-primary text-center answer-js"
@@ -31,17 +34,16 @@ import {watch} from "vue";
 import {useQuestion} from "../composables/question";
 import {storeToRefs} from "pinia";
 import {useRouter} from "nuxt/app";
+import {useQuestionProgress} from "../composables/questionProgress";
 
 definePageMeta({
   middleware: ["redirect-if-game-is-invalid"]
 })
 
 const gameStore = useGameStore();
-
+const {question_progress} = useQuestionProgress();
 const {selectAnswer, question, nextQuestion } = useQuestion();
-
 const {c, reset} = useCountdown(gameStore.timeByQuestion);
-
 const {finished} = storeToRefs(gameStore);
 
 watch(c, value => {

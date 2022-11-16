@@ -31,8 +31,8 @@ export const useGameStore = defineStore('game', {
     state: () => {
         return {
             game: <Game>{},
-            round: 10,
-            good_answers: 9,
+            round: 0,
+            good_answers: 0,
         }
     },
     getters: {
