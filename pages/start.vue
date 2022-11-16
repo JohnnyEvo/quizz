@@ -25,6 +25,8 @@ try {
     }
   }).then((questions: QuestionsApi) => {
     gameStore.setQuestions(questions);
+  }).catch(error => {
+    useApiError(error.data);
   });
 } catch (error) {
   useApiError(error.data);
