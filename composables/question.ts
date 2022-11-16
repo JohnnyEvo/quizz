@@ -91,6 +91,7 @@ export let useQuestion = () => {
     }
 
     let nextQuestion = () => {
+        number_correct_answers.value = 0;
         gameStore.nextRound();
         resetAnswers();
     }
