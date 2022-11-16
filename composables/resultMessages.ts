@@ -24,7 +24,7 @@ export let useResultMessage = (score: Number) => {
             return Math.random() - 0.5;
         })[0]);
         message.value = messages[key];
-    }, 1000);
+    }, 500);
 
     setTimeout(() => {
         clearInterval(interval);
