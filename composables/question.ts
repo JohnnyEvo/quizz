@@ -31,6 +31,8 @@ export let useQuestion = () => {
             element.classList.add('bg-transparent');
         }
 
+        removeHoverEffectFromAnswers();
+
         element.classList.remove('bg-transparent');
         element.classList.remove('text-primary');
 
@@ -39,20 +41,32 @@ export let useQuestion = () => {
 
         await new Promise(resolve => {
             setTimeout(() => resolve(true), 1000);
-        })
+        });
     }
 
+    let removeHoverEffectFromAnswers = () => {
+        const answerElements = document.getElementsByClassName('answer-js');
+
+        for (const element of answerElements) {
+            element.classList.remove('hover:bg-primary');
+            element.classList.remove('hover:text-white');
+            element.classList.remove('hover:border');
+            element.classList.remove('hover:border-alternative');
+        }
+    }
 
     let markAsBad = async (element: HTMLElement) => {
         element.classList.remove('bg-white');
         element.classList.remove('text-primary');
+
+        removeHoverEffectFromAnswers();
 
         element.classList.add('bg-[rgb(var(--color-danger))]');
         element.classList.add('text-white');
 
         await new Promise(resolve => {
             setTimeout(() => resolve(true), 1000);
-        })
+        });
     }
 
     let resetAnswers = () => {
@@ -66,6 +80,11 @@ export let useQuestion = () => {
 
             element.classList.add('bg-white');
             element.classList.add('text-primary');
+
+            element.classList.add('hover:bg-primary');
+            element.classList.add('hover:text-white');
+            element.classList.add('hover:border');
+            element.classList.add('hover:border-alternative');
 
             element.removeAttribute('data-clicked');
         }
